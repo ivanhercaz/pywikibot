@@ -188,7 +188,7 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-    'disambredir': (None, ('Working on ', 'Should the link target to ')),
+    'disambredir': ('Working on ', 'Should the link target to '),
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
     'freebasemappingupload': 'Cannot find ',
