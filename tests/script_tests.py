@@ -188,10 +188,10 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-#    'disambredir': (None, ('Working on ', 'Should the link target to ')),
+    'disambredir': (None, ('Working on ', 'Should the link target to ')),
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
-#    'freebasemappingupload': 'Cannot find ',
+    'freebasemappingupload': 'Cannot find ',
 #    'harvest_template': 'ERROR: Please specify',
 #    'imageuncat':
 #        'WARNING: This script is primarily written for Wikimedia Commons',
@@ -200,8 +200,8 @@ no_args_expected_results = {
 #    'imageharvest': 'From what URL should I get the images',
 #    'login': 'Logged in on ',
 #    'misspelling': 'Working on ',
-    'nowcommons': (None, ('Working on ', 'No transcluded files ',
-                          'Does the description on')),
+    'nowcommons': ('Working on ', ('No transcluded files ',
+                                   'Does the description on')),
 #    'pagefromfile': 'Please enter the file name',
 #    'replace': 'Press Enter to use this automatic message',
     'shell': ('>>> ', 'Welcome to the '),
