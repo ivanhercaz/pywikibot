@@ -494,9 +494,9 @@ class TestScriptSimulate(DefaultSiteTestCase, PwbTestCase):
         })
 
     if site.sitename == 'wikipedia:en':
-        _expected_failures += [
+        _expected_failures.update({
             'nowcommons'  # T223487: fails with ValueError
-        ]
+        })
 
     _allowed_failures = [
         'blockpageschecker',  # missing l10n
