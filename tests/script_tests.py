@@ -78,16 +78,16 @@ script_input = {
     'catall': 'q\n',  # q for quit
     'disambredir': 'q\n',
     'editarticle': 'Test page\n',
-#    'followlive': 'q\n',
+    'followlive': 'q\n',
     'freebasemappingupload': 'q\n',
     'imageuncat': 'q\n',
     'imageharvest':
         'https://upload.wikimedia.org/wikipedia/commons/'
         '8/80/Wikipedia-logo-v2.svg\n\n',
     'interwiki': 'Test page that should not exist\n',
-#    'lonelypages': 'q\n',
+    'lonelypages': 'q\n',
     'makecat': 'q\n',
-#    'misspelling': 'q\n',
+    'misspelling': 'q\n',
     'movepages': 'q\n',
     'pagefromfile': 'q\n',
     'replace': 'foo\nbar\n\n\n',  # match, replacement,
@@ -188,10 +188,10 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-    'disambredir': (None, ('Working on ', 'Should the link target to '),
+#    'disambredir': (None, ('Working on ', 'Should the link target to ')),
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
-    'freebasemappingupload': 'Cannot find ',
+#    'freebasemappingupload': 'Cannot find ',
 #    'harvest_template': 'ERROR: Please specify',
 #    'imageuncat':
 #        'WARNING: This script is primarily written for Wikimedia Commons',
