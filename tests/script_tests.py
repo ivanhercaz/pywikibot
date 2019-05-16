@@ -493,6 +493,11 @@ class TestScriptSimulate(DefaultSiteTestCase, PwbTestCase):
             'clean_sandbox'  # T74305: fails with NotImplementedError
         })
 
+    if site.sitename == 'wikipedia:en':
+        _expected_failures += [
+            'nowcommons'  # T223487: fails with ValueError
+        ]
+
     _allowed_failures = [
         'blockpageschecker',  # missing l10n
         'checkimages',  # missing l10n
