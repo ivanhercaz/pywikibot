@@ -489,7 +489,7 @@ class TestScriptSimulate(DefaultSiteTestCase, PwbTestCase):
 
     if site.is_data_repository():
         _expected_failures.update({
-            'clean_sandbox'  # fails with NotImplementedError
+            'clean_sandbox'  # T74305: fails with NotImplementedError
         })
 
     _allowed_failures = [
