@@ -188,7 +188,8 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-    'disambredir': ('Working on ', 'Should the link target to '),
+    'disambredir': ('Working on ', ('Should the link target to ',
+                                    'Script terminated successfully')),
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
     'freebasemappingupload': 'Cannot find ',
@@ -200,8 +201,8 @@ no_args_expected_results = {
 #    'imageharvest': 'From what URL should I get the images',
 #    'login': 'Logged in on ',
 #    'misspelling': 'Working on ',
-    'nowcommons': ('Working on ', ('No transcluded files ',
-                                   'Does the description on')),
+    'nowcommons': ('Working on ', ('Does the description on',
+                                   'No transcluded files ')),
 #    'pagefromfile': 'Please enter the file name',
 #    'replace': 'Press Enter to use this automatic message',
     'shell': ('>>> ', 'Welcome to the '),
@@ -482,7 +483,7 @@ class TestScriptSimulate(DefaultSiteTestCase, PwbTestCase):
             'imageharvest',  # T167726: fails with AttributeError
         })
     
-    if site.code not in ('en', 'test') and site.family.name != 'wikipedia':
+    if site.code not in ('en', 'test') or site.family.name != 'wikipedia':
         _expected_failures.update({
             'cfd',  # T223211: fails with KeyError
         })
@@ -505,6 +506,11 @@ class TestScriptSimulate(DefaultSiteTestCase, PwbTestCase):
     if not site.has_image_repository:
         _allowed_failures += [
             'nowcommons'  # needs file repository
+        ]
+
+    if not site.has_data_repository:
+        _allowed_failures += [
+            'disambredir'  # needs wikidata repository
         ]
 
     _arguments = '-simulate'
