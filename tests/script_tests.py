@@ -76,6 +76,7 @@ runnable_script_list = (
 
 script_input = {
     'catall': 'q\n',  # q for quit
+    'disambredir': 'q\n',
     'editarticle': 'Test page\n',
 #    'followlive': 'q\n',
     'freebasemappingupload': 'q\n',
@@ -319,6 +320,14 @@ class TestScriptMeta(MetaTestCaseClass):
                 if not hasattr(self, 'net') or not self.net:
                     test_overrides['pywikibot.Site'] = 'None'
 
+                if not isinstance(error, StringTypes):
+                    for msg in error:
+                        if msg in result['stderr']:
+                            error = msg
+                            break
+                    else:
+                        error = None
+
                 result = execute_pwb(cmd, data_in, timeout=timeout,
                                      error=error, overrides=test_overrides)
 
@@ -336,8 +345,6 @@ class TestScriptMeta(MetaTestCaseClass):
                 if error:
                     if isinstance(error, StringTypes):
                         self.assertIn(error, result['stderr'])
-                    else:
-                        self.assertTrue(any([msg in result['stderr'] for msg in error]))
                 
 
                     exit_codes = [0, 1, 2, -9]
