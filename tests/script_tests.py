@@ -200,7 +200,7 @@ no_args_expected_results = {
 #    'login': 'Logged in on ',
 #    'misspelling': 'Working on ',
     'nowcommons': (None, ('Working on ', 'No transcluded files ',
-                          'Does the description on'))
+                          'Does the description on')),
 #    'pagefromfile': 'Please enter the file name',
 #    'replace': 'Press Enter to use this automatic message',
     'shell': ('>>> ', 'Welcome to the '),
