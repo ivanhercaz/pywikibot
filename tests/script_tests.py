@@ -187,7 +187,7 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-#    'disambredir': 'Working on ',
+    'disambredir': 'Working on ',
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
     'freebasemappingupload': 'Cannot find ',
@@ -199,7 +199,8 @@ no_args_expected_results = {
 #    'imageharvest': 'From what URL should I get the images',
 #    'login': 'Logged in on ',
 #    'misspelling': 'Working on ',
-    'nowcommons': 'Working on\nNo transcluded files\nDoes the description on',
+    'nowcommons': (None, ('Working on ', 'No transcluded files ',
+                          'Does the description on'))
 #    'pagefromfile': 'Please enter the file name',
 #    'replace': 'Press Enter to use this automatic message',
     'shell': ('>>> ', 'Welcome to the '),
@@ -333,7 +334,11 @@ class TestScriptMeta(MetaTestCaseClass):
                     unittest_print(' killed', end='  ')
 
                 if error:
-                    self.assertIn(error, result['stderr'])
+                    if isinstance(error, StringTypes):
+                        self.assertIn(error, result['stderr'])
+                    else:
+                        self.assertTrue(any([msg in result['stderr'] for msg in error]))
+                
 
                     exit_codes = [0, 1, 2, -9]
                 elif not is_autorun:
