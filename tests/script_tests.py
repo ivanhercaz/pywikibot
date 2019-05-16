@@ -188,7 +188,7 @@ no_args_expected_results = {
     # TODO: until done here, remember to set editor = None in user-config.py
 #    'cfd': 'ERROR: CFD working page ',
 #    'checkimages': 'Execution time: 0 seconds',
-    'disambredir': 'Working on ',
+    'disambredir': (None, ('Working on ', 'Should the link target to '),
 #    'editarticle': 'Nothing changed',
 #    'followlive': 'Working on ',
     'freebasemappingupload': 'Cannot find ',
@@ -321,15 +321,12 @@ class TestScriptMeta(MetaTestCaseClass):
                     test_overrides['pywikibot.Site'] = 'None'
 
                 if isinstance(error, (list, tuple)):
-                    for msg in error:
-                        if msg in result['stderr']:
-                            error = msg
-                            break
-                    else:
-                        error = None
+                    msg = error[0]
+                else:
+                    msg = error
 
                 result = execute_pwb(cmd, data_in, timeout=timeout,
-                                     error=error, overrides=test_overrides)
+                                     error=msg, overrides=test_overrides)
 
                 stderr = result['stderr'].splitlines()
                 stderr_sleep = [l for l in stderr
@@ -341,6 +338,14 @@ class TestScriptMeta(MetaTestCaseClass):
 
                 if result['exit_code'] == -9:
                     unittest_print(' killed', end='  ')
+
+                if isinstance(error, (list, tuple)):
+                    for msg in error:
+                        if msg in result['stderr']:
+                            error = msg
+                            break
+                    else:
+                        error = None
 
                 if error:
                     if isinstance(error, StringTypes):
