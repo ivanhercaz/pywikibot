@@ -320,7 +320,7 @@ class TestScriptMeta(MetaTestCaseClass):
                 if not hasattr(self, 'net') or not self.net:
                     test_overrides['pywikibot.Site'] = 'None'
 
-                if not isinstance(error, StringTypes):
+                if isinstance(error, (list, tuple)):
                     for msg in error:
                         if msg in result['stderr']:
                             error = msg
